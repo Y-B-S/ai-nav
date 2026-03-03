@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Star, TrendingUp } from '@phosphor-icons/react'
+import { Star } from '@phosphor-icons/react'
 
 const stats = [
   { num: '127', label: '收录工具' },

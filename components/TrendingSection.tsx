@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Star, Fire, Sparkles } from '@phosphor-icons/react'
+import { Star, Fire, Sparkle } from '@phosphor-icons/react'
 import { useState } from 'react'
 
 interface Tool {
