@@ -93,10 +93,10 @@ export default async function ToolPage({ params }: Props) {
           <a
             href={tool.affiliateUrl || tool.url}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener noreferrer sponsored"
             className="flex-1 text-center bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold py-3 px-6 rounded-xl transition-colors"
           >
-            访问官网 / GitHub
+            {tool.badge === 'affiliate' ? '免费试用' : '访问官网 / GitHub'}
           </a>
           <Link
             href="/tools"
@@ -105,6 +105,13 @@ export default async function ToolPage({ params }: Props) {
             更多工具
           </Link>
         </div>
+
+        {/* 联盟披露 */}
+        {tool.badge === 'affiliate' && (
+          <p className="mt-4 text-xs text-slate-600">
+            * 本页面包含联盟链接，通过此链接购买我们可能获得佣金，不影响你的价格。
+          </p>
+        )}
       </div>
     </main>
   )

@@ -1,4 +1,4 @@
-import { tools } from '@/lib/tools'
+import { tools, getPaidTools } from '@/lib/tools'
 import Link from 'next/link'
 import { Metadata } from 'next'
 
@@ -8,7 +8,8 @@ export const metadata: Metadata = {
 }
 
 export default function ToolsPage() {
-  const categories = Array.from(new Set(tools.map(t => t.category)))
+  const paidTools = getPaidTools()
+  const categories = Array.from(new Set(tools.filter(t => t.badge !== 'affiliate').map(t => t.category)))
 
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100">
@@ -21,11 +22,46 @@ export default function ToolsPage() {
           <p className="text-slate-400">共收录 {tools.length} 个工具，每日自动更新</p>
         </div>
 
+        {/* 精选付费工具 */}
+        <div className="mb-14">
+          <div className="flex items-center gap-3 mb-6 border-b border-slate-800 pb-3">
+            <h2 className="text-lg font-semibold text-amber-400">精选推荐</h2>
+            <span className="text-xs bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded-full">联盟合作</span>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {paidTools.map(tool => (
+              <Link
+                key={tool.slug}
+                href={`/tools/${tool.slug}`}
+                className="group rounded-2xl bg-amber-500/5 border border-amber-500/20 p-6 hover:border-amber-500/40 hover:bg-amber-500/10 transition-all duration-300"
+              >
+                <div className="flex items-start justify-between mb-3">
+                  <div className="flex items-start gap-3">
+                    <span className="text-2xl">{tool.icon}</span>
+                    <div>
+                      <h3 className="font-semibold group-hover:text-amber-400 transition-colors">{tool.name}</h3>
+                      <p className="text-xs text-slate-500 mt-0.5">{tool.category}</p>
+                    </div>
+                  </div>
+                  <span className="text-xs bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded-full whitespace-nowrap">推荐</span>
+                </div>
+                <p className="text-sm text-slate-400 line-clamp-2 leading-relaxed">{tool.description}</p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {tool.tags.slice(0, 3).map(tag => (
+                    <span key={tag} className="text-xs bg-slate-700/50 text-slate-400 px-2 py-0.5 rounded-md">{tag}</span>
+                  ))}
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* 开源工具分类 */}
         {categories.map(cat => (
           <div key={cat} className="mb-14">
             <h2 className="text-lg font-semibold text-emerald-400 mb-6 border-b border-slate-800 pb-3">{cat}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {tools.filter(t => t.category === cat).map(tool => (
+              {tools.filter(t => t.category === cat && t.badge !== 'affiliate').map(tool => (
                 <Link
                   key={tool.slug}
                   href={`/tools/${tool.slug}`}
