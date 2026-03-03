@@ -6,11 +6,11 @@ cd /Users/admin/.copaw/projects/ai-nav
 
 echo "=== $(date) 开始更新 ==="
 
-# 更新数据
-node scripts/update-trending.js
+# 更新 lib/tools.ts（单一数据源）
+node scripts/update-tools.js
 
 # 提交并推送
-git add components/TrendingSection.tsx
+git add lib/tools.ts
 git diff --cached --quiet && echo "无变化，跳过推送" && exit 0
 
 TODAY=$(date +%Y-%m-%d)
