@@ -19,10 +19,12 @@ export const metadata: Metadata = {
   verification: {
     google: '3oJv504-_5amS2k6L93EEp3xGzJtuxFNSirLyTFqSc4',
   },
+  metadataBase: new URL('https://aitoolfind.cn'),
   openGraph: {
     title: 'AI导航',
     description: '每日精选最值得用的AI工具',
     type: 'website',
+    url: 'https://aitoolfind.cn',
   },
 }
 

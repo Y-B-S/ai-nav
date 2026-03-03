@@ -1,7 +1,7 @@
 import { getAllSlugs } from '@/lib/tools'
 
 export default function sitemap() {
-  const base = 'https://ai-nav-ruci.vercel.app'
+  const base = 'https://aitoolfind.cn'
 
   const toolPages = getAllSlugs().map(slug => ({
     url: `${base}/tools/${slug}`,
