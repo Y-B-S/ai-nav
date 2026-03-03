@@ -15,6 +15,11 @@ export interface Tool {
   affiliateUrl?: string
   tags: string[]
   pricing?: 'free' | 'freemium' | 'paid'
+  pricingDetail?: string       // e.g. "免费 / Pro $20/月"
+  rating?: number              // 1-5
+  alternatives?: string[]      // slugs of similar tools
+  pros?: string[]
+  cons?: string[]
 }
 
 export const CATEGORIES = [
@@ -37,6 +42,10 @@ export const openSourceTools: Tool[] = [
     category: 'Agent / 自动化', stars: 131007, todayStars: 0, language: 'TypeScript',
     icon: '◇', badge: 'hot', url: 'https://dify.ai', pricing: 'freemium',
     tags: ['Agent', 'RAG', '工作流', '企业级'],
+    pricingDetail: '免费自托管 / Cloud 版 $59/月起',
+    pros: ['可视化工作流，无需写代码', '支持 RAG 知识库', '企业级功能完整'],
+    cons: ['自托管需要一定运维能力', '复杂流程学习曲线较陡'],
+    alternatives: ['langchain', 'n8n', 'autogpt'],
   },
   {
     id: '2', name: 'AutoGPT', slug: 'autogpt', repo: 'Significant-Gravitas/AutoGPT',
@@ -45,6 +54,10 @@ export const openSourceTools: Tool[] = [
     category: 'Agent / 自动化', stars: 172000, todayStars: 0, language: 'Python',
     icon: '◆', badge: 'hot', url: 'https://github.com/Significant-Gravitas/AutoGPT', pricing: 'free',
     tags: ['Agent', '自主AI', 'GPT-4', '任务规划'],
+    pricingDetail: '完全免费开源',
+    pros: ['开创 Agent 赛道，社区活跃', '支持多种工具调用', '完全开源可定制'],
+    cons: ['稳定性一般，任务容易跑偏', '需要较多 API 费用'],
+    alternatives: ['dify', 'langchain'],
   },
   {
     id: '3', name: 'n8n', slug: 'n8n', repo: 'n8n-io/n8n',
@@ -53,6 +66,10 @@ export const openSourceTools: Tool[] = [
     category: 'Agent / 自动化', stars: 98000, todayStars: 0, language: 'TypeScript',
     icon: '○', badge: 'hot', url: 'https://n8n.io', pricing: 'freemium',
     tags: ['工作流', '自动化', '自托管', '集成'],
+    pricingDetail: '自托管免费 / Cloud 版 €20/月起',
+    pros: ['400+ 集成，覆盖面广', '可完全自托管', '支持 AI 节点'],
+    cons: ['免费版有流量限制', '复杂流程调试较麻烦'],
+    alternatives: ['dify'],
   },
   {
     id: '4', name: 'LangChain', slug: 'langchain', repo: 'langchain-ai/langchain',
@@ -61,6 +78,10 @@ export const openSourceTools: Tool[] = [
     category: 'Agent / 自动化', stars: 102000, todayStars: 0, language: 'Python',
     icon: '◉', badge: 'hot', url: 'https://langchain.com', pricing: 'free',
     tags: ['LLM', 'RAG', 'Chain', '框架'],
+    pricingDetail: '完全免费开源',
+    pros: ['生态最完整，文档丰富', '支持所有主流 LLM', '社区插件多'],
+    cons: ['抽象层较重，调试困难', '版本迭代快，API 变化频繁'],
+    alternatives: ['dify', 'autogpt'],
   },
   {
     id: '5', name: 'ChatGPT on WeChat', slug: 'chatgpt-on-wechat', repo: 'zhayujie/chatgpt-on-wechat',
@@ -69,6 +90,10 @@ export const openSourceTools: Tool[] = [
     category: 'Agent / 自动化', stars: 41780, todayStars: 0, language: 'Python',
     icon: '◎', url: 'https://github.com/zhayujie/chatgpt-on-wechat', pricing: 'free',
     tags: ['微信', '机器人', '企业微信', '飞书'],
+    pricingDetail: '完全免费开源，需自备 API Key',
+    pros: ['国内平台支持最全', '部署简单', '社区活跃'],
+    cons: ['依赖第三方 API，有成本', '功能扩展需要改代码'],
+    alternatives: ['cherry-studio'],
   },
 
   // AI 写作
@@ -79,6 +104,10 @@ export const openSourceTools: Tool[] = [
     category: 'AI 写作', stars: 149816, todayStars: 0, language: 'HTML',
     icon: '◈', badge: 'hot', url: 'https://prompts.chat', pricing: 'free',
     tags: ['Prompt', 'ChatGPT', '提示词', '效率'],
+    pricingDetail: '完全免费',
+    pros: ['Prompt 质量高，经过社区验证', '分类清晰', '持续更新'],
+    cons: ['以英文 Prompt 为主', '无法直接在平台使用'],
+    alternatives: ['open-webui'],
   },
   {
     id: '7', name: 'Open WebUI', slug: 'open-webui', repo: 'open-webui/open-webui',
@@ -87,6 +116,10 @@ export const openSourceTools: Tool[] = [
     category: 'AI 写作', stars: 89000, todayStars: 0, language: 'Python',
     icon: '◐', badge: 'hot', url: 'https://openwebui.com', pricing: 'free',
     tags: ['聊天界面', 'Ollama', '自托管', 'RAG'],
+    pricingDetail: '完全免费开源',
+    pros: ['界面美观，功能完整', '支持 Ollama 和 OpenAI', '插件系统丰富'],
+    cons: ['需要自己部署', '移动端体验一般'],
+    alternatives: ['cherry-studio', 'ollama'],
   },
 
   // AI 编程
@@ -97,6 +130,10 @@ export const openSourceTools: Tool[] = [
     category: 'AI 编程', stars: 23000, todayStars: 0, language: 'TypeScript',
     icon: '◑', badge: 'new', url: 'https://continue.dev', pricing: 'free',
     tags: ['VS Code', '代码补全', '开源', 'IDE'],
+    pricingDetail: '完全免费开源',
+    pros: ['支持任意模型，不绑定厂商', 'VS Code 和 JetBrains 双支持', '高度可定制'],
+    cons: ['需要自己配置模型', '补全速度取决于模型'],
+    alternatives: ['tabby', 'cursor'],
   },
   {
     id: '9', name: 'Aider', slug: 'aider', repo: 'paul-gauthier/aider',
@@ -105,6 +142,10 @@ export const openSourceTools: Tool[] = [
     category: 'AI 编程', stars: 26000, todayStars: 0, language: 'Python',
     icon: '◆', url: 'https://aider.chat', pricing: 'free',
     tags: ['终端', 'git', '多文件', '重构'],
+    pricingDetail: '完全免费开源，需自备 API Key',
+    pros: ['多文件编辑能力强', '自动 git commit', '支持多种模型'],
+    cons: ['纯命令行，无 GUI', '需要熟悉终端操作'],
+    alternatives: ['continue', 'cursor'],
   },
   {
     id: '10', name: 'Tabby', slug: 'tabby', repo: 'TabbyML/tabby',
@@ -113,6 +154,10 @@ export const openSourceTools: Tool[] = [
     category: 'AI 编程', stars: 23000, todayStars: 0, language: 'Rust',
     icon: '○', url: 'https://tabby.tabbyml.com', pricing: 'freemium',
     tags: ['代码补全', '自托管', 'Copilot替代', '私有部署'],
+    pricingDetail: '自托管免费 / Cloud 版付费',
+    pros: ['数据完全私有', '支持本地模型', '企业级权限管理'],
+    cons: ['自托管需要 GPU', '配置较复杂'],
+    alternatives: ['continue', 'cursor'],
   },
 
   // AI 搜索
@@ -123,6 +168,10 @@ export const openSourceTools: Tool[] = [
     category: 'AI 搜索', stars: 7800, todayStars: 0, language: 'TypeScript',
     icon: '◇', badge: 'new', url: 'https://morphic.sh', pricing: 'free',
     tags: ['AI搜索', '开源', '自托管', 'Perplexity替代'],
+    pricingDetail: '完全免费开源，可自托管',
+    pros: ['Perplexity 开源替代', '答案带来源引用', '可完全自托管'],
+    cons: ['功能比 Perplexity Pro 少', '需要自己部署'],
+    alternatives: ['perplexity'],
   },
 
   // 图像生成
@@ -133,6 +182,10 @@ export const openSourceTools: Tool[] = [
     category: '图像生成', stars: 145000, todayStars: 0, language: 'Python',
     icon: '◈', badge: 'hot', url: 'https://github.com/AUTOMATIC1111/stable-diffusion-webui', pricing: 'free',
     tags: ['Stable Diffusion', '文生图', '本地运行', 'ControlNet'],
+    pricingDetail: '完全免费开源，需要 GPU',
+    pros: ['功能最完整', '插件生态丰富', '社区资源多'],
+    cons: ['需要较好的 GPU', '安装配置复杂'],
+    alternatives: ['comfyui'],
   },
   {
     id: '13', name: 'ComfyUI', slug: 'comfyui', repo: 'comfyanonymous/ComfyUI',
@@ -141,6 +194,10 @@ export const openSourceTools: Tool[] = [
     category: '图像生成', stars: 68000, todayStars: 0, language: 'Python',
     icon: '◉', badge: 'hot', url: 'https://github.com/comfyanonymous/ComfyUI', pricing: 'free',
     tags: ['节点工作流', 'Flux', 'SDXL', '图像生成'],
+    pricingDetail: '完全免费开源，需要 GPU',
+    pros: ['节点式工作流灵活强大', '支持最新模型最快', '性能优秀'],
+    cons: ['学习曲线陡峭', '新手不友好'],
+    alternatives: ['stable-diffusion-webui'],
   },
 
   // 视频生成
@@ -151,6 +208,9 @@ export const openSourceTools: Tool[] = [
     category: '视频生成', stars: 12000, todayStars: 0, language: 'Python',
     icon: '◐', badge: 'new', url: 'https://github.com/Wan-Video/Wan2.1', pricing: 'free',
     tags: ['视频生成', '文生视频', '开源', '阿里'],
+    pricingDetail: '完全免费开源，需要高端 GPU',
+    pros: ['效果媲美商业产品', '完全开源', '支持文生视频和图生视频'],
+    cons: ['需要高端 GPU（24GB+）', '生成速度慢'],
   },
 
   // 效率工具
@@ -161,6 +221,10 @@ export const openSourceTools: Tool[] = [
     category: '效率工具', stars: 40588, todayStars: 0, language: 'TypeScript',
     icon: '◑', url: 'https://github.com/CherryHQ/cherry-studio', pricing: 'free',
     tags: ['桌面应用', '多模型', 'Agent', '知识库'],
+    pricingDetail: '完全免费开源',
+    pros: ['300+ 助手预设', '多模型同时使用', '界面美观'],
+    cons: ['桌面端，无移动版', '部分功能仍在完善'],
+    alternatives: ['open-webui', 'chatgpt-on-wechat'],
   },
   {
     id: '16', name: 'Cursor', slug: 'cursor', repo: 'getcursor.com',
@@ -169,6 +233,10 @@ export const openSourceTools: Tool[] = [
     category: '效率工具', stars: 0, todayStars: 0, language: 'Web',
     icon: '◆', badge: 'hot', url: 'https://cursor.com', pricing: 'freemium',
     tags: ['代码编辑器', 'VS Code', 'AI编程', 'Claude'],
+    pricingDetail: '免费版每月 2000 次补全 / Pro $20/月',
+    pros: ['代码库级别的 AI 理解', '补全质量最高', '基于 VS Code 无迁移成本'],
+    cons: ['Pro 版较贵', '重度依赖云端 API'],
+    alternatives: ['continue', 'tabby'],
   },
   {
     id: '17', name: 'Raycast AI', slug: 'raycast-ai', repo: 'raycast.com',
@@ -177,6 +245,10 @@ export const openSourceTools: Tool[] = [
     category: '效率工具', stars: 0, todayStars: 0, language: 'macOS',
     icon: '○', url: 'https://raycast.com', pricing: 'freemium',
     tags: ['Mac', '启动器', '快捷键', '效率'],
+    pricingDetail: 'Raycast 免费 / AI 功能 $8/月',
+    pros: ['系统级集成，随时唤起', '快捷键操作流畅', '支持多种 AI 模型'],
+    cons: ['仅限 macOS', 'AI 功能需要付费'],
+    alternatives: ['cherry-studio'],
   },
 
   // 本地模型
@@ -187,6 +259,10 @@ export const openSourceTools: Tool[] = [
     category: '本地模型', stars: 163895, todayStars: 0, language: 'Go',
     icon: '◎', badge: 'hot', url: 'https://ollama.com', pricing: 'free',
     tags: ['本地模型', 'LLM', '开源', 'API'],
+    pricingDetail: '完全免费开源',
+    pros: ['一行命令启动', '支持模型最多', '提供 REST API'],
+    cons: ['纯命令行，无 GUI', '需要足够内存/显存'],
+    alternatives: ['lm-studio'],
   },
   {
     id: '19', name: 'LM Studio', slug: 'lm-studio', repo: 'lmstudio.ai',
@@ -195,6 +271,10 @@ export const openSourceTools: Tool[] = [
     category: '本地模型', stars: 0, todayStars: 0, language: 'Desktop',
     icon: '◇', url: 'https://lmstudio.ai', pricing: 'free',
     tags: ['本地模型', '图形界面', 'HuggingFace', '无需命令行'],
+    pricingDetail: '完全免费',
+    pros: ['图形界面，新手友好', '一键下载模型', '内置聊天界面'],
+    cons: ['功能比 Ollama 少', '不支持 API 调用（免费版）'],
+    alternatives: ['ollama'],
   },
   {
     id: '20', name: 'Transformers', slug: 'transformers', repo: 'huggingface/transformers',
@@ -203,6 +283,10 @@ export const openSourceTools: Tool[] = [
     category: '本地模型', stars: 157279, todayStars: 0, language: 'Python',
     icon: '◈', badge: 'hot', url: 'https://huggingface.co/transformers', pricing: 'free',
     tags: ['NLP', '预训练模型', 'PyTorch', 'HuggingFace'],
+    pricingDetail: '完全免费开源',
+    pros: ['模型数量最多', '文档完善', '支持所有主流框架'],
+    cons: ['学习曲线较陡', '需要 Python 基础'],
+    alternatives: ['ollama'],
   },
 ]
 
@@ -215,6 +299,10 @@ export const paidTools: Tool[] = [
     icon: '◈', badge: 'affiliate', url: 'https://perplexity.ai',
     affiliateUrl: 'https://perplexity.ai', pricing: 'paid',
     tags: ['AI搜索', '实时联网', '引用来源', 'Pro'],
+    pricingDetail: '免费版每日限额 / Pro $20/月',
+    pros: ['实时联网，信息最新', '答案带来源引用', '支持追问'],
+    cons: ['免费版有次数限制', '无法完全替代搜索引擎'],
+    alternatives: ['morphic'],
   },
   {
     id: 'p2', name: 'Notion AI', slug: 'notion-ai', repo: 'notion.so',
@@ -224,6 +312,10 @@ export const paidTools: Tool[] = [
     icon: '◻', badge: 'affiliate', url: 'https://notion.so',
     affiliateUrl: 'https://notion.so', pricing: 'paid',
     tags: ['写作助手', '知识库', '团队协作', 'AI写作'],
+    pricingDetail: 'Notion 免费版可用 / AI 功能 $10/月',
+    pros: ['与 Notion 深度集成', '无需切换工具', '支持知识库问答'],
+    cons: ['依赖 Notion 生态', '功能不如专业 AI 写作工具'],
+    alternatives: ['jasper', 'writesonic'],
   },
   {
     id: 'p3', name: 'Jasper AI', slug: 'jasper', repo: 'jasper.ai',
@@ -233,6 +325,10 @@ export const paidTools: Tool[] = [
     icon: '◆', badge: 'affiliate', url: 'https://jasper.ai',
     affiliateUrl: 'https://jasper.ai', pricing: 'paid',
     tags: ['AI写作', '营销文案', '品牌声音', '内容创作'],
+    pricingDetail: 'Creator $39/月 / Teams $99/月起',
+    pros: ['品牌声音训练', '50+ 内容模板', '支持 30+ 语言'],
+    cons: ['价格较贵', '需要学习使用方法'],
+    alternatives: ['writesonic', 'copy-ai'],
   },
   {
     id: 'p4', name: 'Writesonic', slug: 'writesonic', repo: 'writesonic.com',
@@ -242,6 +338,10 @@ export const paidTools: Tool[] = [
     icon: '◐', badge: 'affiliate', url: 'https://writesonic.com',
     affiliateUrl: 'https://writesonic.com', pricing: 'paid',
     tags: ['AI写作', 'SEO优化', '内容营销', '落地页'],
+    pricingDetail: '免费版 / Pro $16/月起',
+    pros: ['SEO 优化集成', '价格相对实惠', '内容质量高'],
+    cons: ['免费版字数有限', '部分功能需要高级套餐'],
+    alternatives: ['jasper', 'copy-ai'],
   },
   {
     id: 'p5', name: 'Copy.ai', slug: 'copy-ai', repo: 'copy.ai',
@@ -251,6 +351,10 @@ export const paidTools: Tool[] = [
     icon: '◑', badge: 'affiliate', url: 'https://copy.ai',
     affiliateUrl: 'https://copy.ai', pricing: 'paid',
     tags: ['AI文案', '销售自动化', 'GTM', '工作流'],
+    pricingDetail: '免费版 / Pro $36/月',
+    pros: ['GTM 工作流自动化', '销售场景覆盖全', 'CRM 集成'],
+    cons: ['价格偏高', '学习成本较高'],
+    alternatives: ['jasper', 'writesonic'],
   },
 ]
 
