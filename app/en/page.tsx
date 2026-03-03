@@ -22,7 +22,7 @@ export default function EnHomePage() {
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100">
       {/* Impact site verification */}
-      <p className="hidden">Impact-Site-Verification: de8b8d98-4c1c-414d-8c9b-6d678fe6c1ff</p>
+      <p style={{fontSize:'1px',color:'transparent',position:'absolute'}}>Impact-Site-Verification: de8b8d98-4c1c-414d-8c9b-6d678fe6c1ff</p>
       {/* Header */}
       <header className="sticky top-0 z-40 backdrop-blur-xl bg-slate-950/80 border-b border-slate-800/50">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
