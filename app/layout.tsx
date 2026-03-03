@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   description: '从 GitHub、ProductHunt 精选全网最热门 AI 工具。每天自动更新，中文介绍，帮你找到真正有用的 AI 工具。',
   keywords: 'AI工具,AI导航,ChatGPT,Claude,Midjourney,AI写作,AI编程',
   verification: {
-    google: '3oJv504-_5amS2k6L93EEp3xGzJtuxFNSirLyTFqSc4',
+    google: 'Ll2E874nkGCktcrgP-dlHN9GAOtdCoqkHRqTcpWbjDU',
   },
   metadataBase: new URL('https://aitoolfind.cn'),
   openGraph: {
